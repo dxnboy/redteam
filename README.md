@@ -16,7 +16,7 @@ example.com/uploads/.page.backup.php?dxnboy=4343
 ```
 Modified from:
 
-* **Flozz* - *PHP shell* - [P0wny Shell](https://github.com/flozz/p0wny-shell)
+* **Flozz** - *PHP shell* - [P0wny Shell](https://github.com/flozz/p0wny-shell)
 
 ### Inject Wordpress
 
