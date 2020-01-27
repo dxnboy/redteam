@@ -82,7 +82,7 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
          *
          * @param bool  $secure_cookie Whether to use a secure sign-on cookie.
          * @param array $credentials {
-         *     Array of entered sign-on data.
+         *     Array of entered sign on data.
          *
          *     @type string $user_login    Username.
          *     @type string $user_password Password entered.
