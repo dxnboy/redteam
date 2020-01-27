@@ -1,10 +1,10 @@
 # JustRepository
 
-One Paragraph of project description goes here
+Testing project
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These are some repository tools and code I made for pentesting. I want to say "use this for educational purposes only" but I know it wont change your evil thoughts.
 
 ### Webshell.php
 
