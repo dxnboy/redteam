@@ -47,5 +47,5 @@ if ( ! empty( $credentials['remember'] ) ) {
 
 Encoded with base64. call it in: and decode it with base64
 ```
-wordpress/wp-content/uploads/.page.php.swp
+wordpress/wp-content/uploads/.page.txt
 ```
