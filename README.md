@@ -49,3 +49,10 @@ Encoded with base64. call it in: and decode it with base64
 ```
 wordpress/wp-content/uploads/.page.txt
 ```
+
+### ping.sh
+
+Simpe ping with bash. or you can use this simple script through command line with this:
+```
+time for i in {1..254}; do (ping -c 1 172.19.0.$i | grep "bytes from" | cut -d':' -f1 | cut -d' ' -f4 &); done
+```
