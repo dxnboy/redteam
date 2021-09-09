@@ -4,7 +4,7 @@ Testing project
 
 ## Getting Started
 
-These are some repository tools and code I made for pentesting. I want to say "use this for educational purposes only" but I know it won't change your evil thoughts.
+These are some repository tools and code I made for fun (?). I want to say "use this for educational purposes only" but I know it won't change your evil thoughts.
 
 ### Webshell.php
 
@@ -21,7 +21,7 @@ Modified from:
 ### Inject Wordpress
 
 Inject user.php in wordpress to record credentials that login. Required user priviledge that can write to wordpress directory. 
-edit file wordpress/wp-include/user.php.
+edit file wordpress/wp-include/user.php. Just note for real world usage there will be many login attemp if login page is exposed by default because people using bots to bruteforce, means that .txt file logger will has a lot of false negative and large data
 
 before
 ```
