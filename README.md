@@ -71,7 +71,7 @@ Usage: sel <target ip> <Port #>
 Windows compiled x64 python exe bindshell Modified from:
 * **NullByte** - *Windows Python Bind Shell* - [Python Bind Shell](https://null-byte.wonderhowto.com/how-to/create-bind-shell-python-0163951/)
 
-bind-dxntboy-8282.exe has green status from virus total and can be run on updated Win 10 Enterprise (atleast until today it created). Bind to port 8282, USER:dxntboy, PASS:pass and ready to go. Will compile in stealth mode (running in background) if I has to use in real world. Connect via ncat
+bind-dxntboy-8282.exe has green status from virus total and can be run on updated Win 10 Enterprise (atleast until today it created). Bind to port 8282, USER:dxntboy, PASS:pass and ready to go. Default pipe from script will bind up to 5 connection. Will compile in stealth mode (no cmd pop up and running in background) if I has to use in real world and will mutate encoding base64 using tool from neetspooky base64 mutate. Run bind-dxntboy-8282.exe file and connect via ncat
 ```
 nc <target> 8282
 ```
