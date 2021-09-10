@@ -58,7 +58,7 @@ Simpe ping with bash. or you can use this simple script through command line wit
 time for i in {1..254}; do (ping -c 1 172.19.0.$i | grep "bytes from" | cut -d':' -f1 | cut -d' ' -f4 &); done
 ```
 ### Reverse shell Evade Defender AV
-In case nc.exe blocked or need single command line reverse shell on limited shell or single click reverse shell. Using python 2.7 (os,socket,subprocess,threading) converted in exe binary spawn \windows\system32\cmd. Evade by encrypt with base64 and simple print argument. Catch with ncat for rev and meterpreter session for mrev
+In case nc.exe blocked or need single command line reverse shell on limited RCE or single click reverse shell. Using python 2.7 (os,socket,subprocess,threading) converted in exe binary spawn \windows\system32\cmd. Evade by encrypt with base64 and simple print argument. Catch with ncat for rev and meterpreter session for mrev
 ```
 .\rev444
 .\mrev4444
