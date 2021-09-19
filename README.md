@@ -4,7 +4,7 @@ Testing project
 
 ## Getting Started
 
-These are repository for tools and code I ̶m̶a̶d̶e modify for fun (?). I want to say "use this for educational purposes only" but I know it won't change your evil thoughts.
+These are repository for tools and code I modify and compile for fun (?). I want to say "use this for educational purposes only" but I know it won't change your evil thoughts.
 
 ### Webshell.php
 
