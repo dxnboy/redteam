@@ -6,8 +6,8 @@ buf = 'A'*10
 while True:
 	try:
 		s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-		s.connect(("10.10.188.74",2244))
-		buffer=("OVERFLOW1 "+buf)
+		s.connect(("10.1.1.5",2244))
+		buffer=("OVERFLOW "+buf)
 		s.recv(4098)
 		s.send(buffer)
 		s.recv(4098)
