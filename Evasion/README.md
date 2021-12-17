@@ -1,4 +1,4 @@
-'''Usage'''
+# Usage
 
 1. change b64payload in mrtp.py
 2. python.exe ./setup.py py2exe
