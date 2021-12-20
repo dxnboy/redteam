@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $dxnboy = "";
 
 if($_GET["dxnboy"] === "4343") {
