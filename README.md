@@ -4,7 +4,7 @@ Testing project
 
 ## Getting Started
 
-These are repository for tools and code I modify and compile for fun (?). I want to say "use this for educational purposes only" but I know it won't change your evil thoughts.
+These are repository for tools and code I modify and compile for fun (?). Note that "use this for educational purposes only".
 
 ### Webshell.php
 
@@ -21,7 +21,7 @@ Modified from:
 ### Inject Wordpress
 
 Inject user.php in wordpress to record credentials that login (kind of keylogger). Required user priviledge that can write to wordpress directory. 
-edit file wordpress/wp-include/user.php. Just note for real world usage there will be many login attemp if login page is exposed by default because people using bots to bruteforce, means that .txt file logger will has a lot of false negative and large data
+edit file wordpress/wp-include/user.php. For real world usage there will be many login attemp if login page is exposed by default because people using bots to bruteforce, means that .txt file logger will has a lot of false negative and large data
 
 before
 ```
@@ -66,7 +66,7 @@ Usage: sel <target ip> <Port #>
 Windows compiled x64 python exe bindshell Modified from:
 * **NullByte** - *Windows Python Bind Shell* - [Python Bind Shell](https://null-byte.wonderhowto.com/how-to/create-bind-shell-python-0163951/)
 
-bind-dxntboy-8282.exe has green status from virus total and can be run on updated Win 10 Enterprise (atleast until today it created). Bind to port 8282, USER:dxntboy, PASS:pass and ready to go. Default pipe from script will bind up to 5 connection. Will compile in stealth mode (no cmd pop up and running in background) if I has to use in real world and will mutate encoding base64 using tool from neetspooky base64 mutate. Run bind-dxntboy-8282.exe file and connect via ncat
+bind-dxntboy-8282.exe has green status from virus total and can be run on updated Win 10 Enterprise (at least until today I compile). Bind to port 8282, USER:dxntboy, PASS:pass and ready to go. Default pipe from script will bind up to 5 connection. Will compile in stealth mode (no cmd pop up and running in background) if I has to use in real world and will mutate encoding base64 using tool from neetspooky base64 mutate. Run bind-dxntboy-8282.exe file and connect via ncat
 ```
 nc <target> 8282
 ```
