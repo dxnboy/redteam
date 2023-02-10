@@ -21,7 +21,7 @@ Modified from:
 ### Inject Wordpress
 
 Inject user.php in wordpress to record credentials that login (kind of keylogger). Required user priviledge that can write to wordpress directory. 
-edit file wordpress/wp-include/user.php. For real world usage there will be many login attemp if login page is exposed by default because people using bots to bruteforce, means that .txt file logger will has a lot of false negative and large data
+edit file wordpress/wp-include/user.php. For real world usage there will be many login attemp if login page is exposed by default because people using bots to bruteforce, means that .txt logger file will has a lot of junk and large data storage.
 
 before
 ```
