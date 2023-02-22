@@ -1,4 +1,3 @@
-print("> pyDirb  Lautaro Villarreal Culic' <")
 print("-------------------------------------")
 print("||||||||||| edited dxnboy |||||||||||")
 print("-------------------------------------")
