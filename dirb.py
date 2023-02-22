@@ -1,22 +1,21 @@
-#!/user/bin/python3
-#scans for web directories from a word list
-#replace common.txt with your wordlist
-#for python 3
+print("> pyDirb  Lautaro Villarreal Culic' <")
+print("-------------------------------------")
+print("||||||||||| edited dxnboy |||||||||||")
+print("-------------------------------------")
 
-import requests
+import requests 
+import sys 
 
-def requests(url):
-    try:
-        return requests.get("http://" + url)
-    except requests.exceptions.ConnectionError:
+#"wordlist.txt" must be in the same dir that pyDirb.py
+sub_list = open("wordlist.txt").read() 
+directories = sub_list.splitlines()
+target_url = input("Target <https://google.com/>: ")
+
+for dir in directories:
+    #Change the URL.
+    dir_enum = target_url + dir
+    r = requests.get(dir_enum)
+    if r.status_code==404: 
         pass
-
-target_url = input("Enter Target URL: ")
-
-file = open("common.txt","r")
-for line in file:
-    word = line.strip()
-    full_url = target_url + "/" + word
-    response = request(full_url)
-    if response:
-        print("Discovered directory at this link: " + full_url)
+    else:
+        print("Directory:" ,dir_enum)
